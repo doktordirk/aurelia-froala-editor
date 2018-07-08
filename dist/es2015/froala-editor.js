@@ -80,13 +80,13 @@ export let FroalaEditor = (_dec = customElement('froala-editor'), _dec2 = inject
 		if (this.eventHandlers && this.eventHandlers.length != 0) {
 			for (let eventHandlerName in this.eventHandlers) {
 				let handler = this.eventHandlers[eventHandlerName];
-				this.instance.on(`froalaEditor.${ eventHandlerName }`, function () {
+				this.instance.on(`froalaEditor.${eventHandlerName}`, function () {
 					let p = arguments;
 					return handler.apply(this, p);
 				});
 			}
 		}
-		this.instance.on('froalaEditor.contentChanged, froalaEditor.blur', (e, editor) => this.value = editor.html.get());
+		this.instance.on('froalaEditor.contentChanged froalaEditor.blur', (e, editor) => this.value = editor.html.get());
 
 		this.instance.froalaEditor(Object.assign({}, this.config));
 	}
